@@ -48,6 +48,10 @@ namespace Graphicity
                 }
                 previousNum = dices[i];
             }
+            if (nums > 1)
+            {
+                similarGroups.Add(nums);
+            }
             int division = 1;
             for (int i = 0; i < similarGroups.Count; i++)
             {
@@ -83,7 +87,11 @@ namespace Graphicity
                     dices.Add(1);
                 }
                 int goodCases = 0;
-                int allCases = 0;
+                int allCases = 6;
+                for (int i = 1; i < dices.Count; i++)
+                {
+                    allCases *= 6;
+                }
                 bool finished = false;
                 do
                 {
@@ -94,14 +102,28 @@ namespace Graphicity
                     }
                     if (sum == 13)
                     {
-                        goodCases += findSimilarGroups(dices);
+                        goodCases++;
                     }
-                    allCases += findSimilarGroups(dices);
                     finished = true;
                     for (int i = 0; i < dices.Count; i++)
                     {
                         if (dices[i] != 6)
                         {
+                            bool all6 = true;
+                            for (int j = 0; j < i; j++)
+                            {
+                                if (dices[j] != 6)
+                                {
+                                    all6 = false;
+                                }
+                            }
+                            if (all6)
+                            {
+                                for (int j = 0; j < i; j++)
+                                {
+                                    dices[j] = 1;
+                                }
+                            }
                             dices[i]++;
                             finished = false;
                             break;
