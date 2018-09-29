@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Graphicity
@@ -16,6 +17,45 @@ namespace Graphicity
             }
         }
         static List<DiceAndExaminations> diceAndExaminations = new List<DiceAndExaminations>();
+
+        static int factorial(int num)
+        {
+            int result = num;
+            for (int i = 1; i < num; i++)
+            {
+                result *= i;
+            }
+            return result;
+        }
+
+        static int findSimilarGroups(List<int> dices)
+        {
+            List<int> similarGroups = new List<int>();
+            int nums = 1, previousNum = 0, goodCases = 0;
+            for (int i = 0; i < dices.Count; i++)
+            {
+                if (previousNum == dices[i])
+                {
+                    nums++;
+                }
+                else
+                {
+                    if (nums != 1)
+                    {
+                        similarGroups.Add(nums);
+                    }
+                    nums = 1;
+                }
+                previousNum = dices[i];
+            }
+            int division = 1;
+            for (int i = 0; i < similarGroups.Count; i++)
+            {
+                division *= factorial(similarGroups[i]);
+            }
+            goodCases += factorial(dices.Count) / division;
+            return goodCases;
+        }
 
         static void Main(string[] args)
         {
@@ -42,19 +82,37 @@ namespace Graphicity
                 {
                     dices.Add(1);
                 }
+                int goodCases = 0;
+                int allCases = 0;
                 bool finished = false;
                 do
                 {
                     int sum = 0;
-                    foreach (var dice in dices)
+                    for (int i = 0; i < dices.Count; i++)
                     {
-                        sum += dice;
+                        sum += dices[i];
                     }
                     if (sum == 13)
                     {
-
+                        goodCases += findSimilarGroups(dices);
+                    }
+                    allCases += findSimilarGroups(dices);
+                    finished = true;
+                    for (int i = 0; i < dices.Count; i++)
+                    {
+                        if (dices[i] != 6)
+                        {
+                            dices[i]++;
+                            finished = false;
+                            break;
+                        }
                     }
                 } while (!finished);
+                double probability = (double)goodCases / allCases;
+                for (int i = 1; i < diceAndExamination.examinations; i++)
+                {
+                    probability *= probability;
+                }
             }
         }
     }
