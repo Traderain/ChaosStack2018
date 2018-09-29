@@ -1,0 +1,81 @@
+{
+  "data": {
+    "name": "Total",
+    "items": [
+      {
+        "name": "Communication Services",
+        "items": [
+          {
+            "name": "Telecommunication Services",
+            "items": [
+              {"name": "Verizon", "value": "600 USD"},
+              {"name": "AT&T", "value": "7000 USD"}
+            ]
+          }
+        ]
+      }, {
+        "name": "Consumer Discretionary",
+        "items": [
+          {
+            "name": "Media",
+            "items": [
+              {"name": "Walt Disney", "value": "3300 USD"},
+              {"name": "Twentieth-First Century Fox", "value": "500 USD"},
+              {"name": "Comcast", "value": "1000 USD"}
+            ]
+          }, {
+            "name": "Retailing",
+            "items": [
+              {"name": "Netflix", "value": "3300 USD"},
+              {"name": "Target", "value": "700 USD"},
+              {"name": "Amazon", "value": "6700 USD"},
+              {"name": "Home Depot", "value": "700 USD"},
+              {"name": "Lowe's Companies", "value": "600 USD"},
+              {"name": "Booking Holdings", "value": "700 USD"}
+            ]
+          }, {
+            "name": "Automobiles",
+            "items": [
+              {"name": "Fort Motor", "value": "3300 USD"},
+              {"name": "General Motors", "value": "7700 USD"}
+            ]
+          }
+        ]
+      }, {
+        "name": "Information Technology",
+        "items": [
+          {
+            "name": "Software & Services",
+            "items": [
+              {"name": "Alphabet", "value": "1600 USD"},
+              {"name": "Microsoft", "value": "1200 USD"},
+              {"name": "Twitter", "value": "2600 USD"},
+              {"name": "Paypal", "value": "7600 USD"},
+              {"name": "Oracle", "value": "700 USD"}
+            ]
+          }, {
+            "name": "Technology Hardware",
+            "items": [
+              {"name": "Apple", "value": "1600 USD"},
+              {"name": "Cisco", "value": "1200 USD"}
+            ]
+          }, {
+            "name": "Semiconductors & Equipment",
+            "items": [
+              {"name": "NVIDIA", "value": "12600 USD"},
+              {"name": "Intel", "value": "1100 USD"}
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "locks": ["Intel", "Technology Hardware", "Consumer Discretionary", "Retailing"],
+  "rebalance": [
+    {"name": "Verizon", "delta": "-500 USD"},
+    {"name": "Media", "delta": "2000 USD"},
+    {"name": "Amazon", "delta": "3000 USD"},
+    {"name": "Information Technology", "delta": "-3500 USD"}
+  ]
+}
+ 
